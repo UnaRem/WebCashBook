@@ -1,0 +1,22 @@
+# http://editorconfig.org
+
+# 顶层配置，匹配所有文件
+root = true
+
+[*]
+# 字符集为 UTF-8
+charset = utf-8
+# 缩进方式：使用空格
+indent_style = space
+# 缩进大小：2个空格 (Vue/TS 社区标准)
+indent_size = 2
+# 行尾换行符：使用 Unix 风格的 LF
+end_of_line = lf
+# 移除行末多余空格
+trim_trailing_whitespace = true
+# 确保文件末尾有一个空行
+insert_final_newline = true
+
+# 针对 Markdown 文件，可能需要不同的缩进
+[*.md]
+trim_trailing_whitespace = false
