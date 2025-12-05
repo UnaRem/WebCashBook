@@ -6,6 +6,10 @@ on:
     tags:
       - 'v*' # 当推送 v 开头的 tag 时触发，如 v1.0.0
 
+# 添加写入权限
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
