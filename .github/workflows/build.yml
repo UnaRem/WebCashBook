@@ -1,0 +1,49 @@
+# 自动构建并发布 dist.zip
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - 'v*' # 当推送 v 开头的 tag 时触发，如 v1.0.0
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 检出代码
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 安装 Bun
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      # 安装依赖
+      - name: Install dependencies
+        run: bun install
+
+      # 类型检查
+      - name: Type check
+        run: bun run type-check
+
+      # 构建
+      - name: Build
+        run: bun run build
+
+      # 打包 dist 目录为 zip
+      - name: Create dist.zip
+        run: |
+          cd dist
+          zip -r ../dist.zip .
+
+      # 创建 Release 并上传 zip
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist.zip
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
