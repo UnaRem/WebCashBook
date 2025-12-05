@@ -20,6 +20,7 @@ declare module 'vue' {
     ExpenditureChart: typeof import('./src/components/ExpenditureChart.vue')['default']
     IncomeChart: typeof import('./src/components/IncomeChart.vue')['default']
     InterfaceCard: typeof import('./src/components/InterfaceCard.vue')['default']
+    ReportTab: typeof import('./src/components/ReportTab.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SettingTab: typeof import('./src/components/SettingTab.vue')['default']

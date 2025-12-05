@@ -3,6 +3,7 @@ import DashboardView from '@/views/DashboardView.vue'
 import DashboardTab from '@/components/DashboardTab.vue'
 import TransactionsTab from '@/components/TransactionsTab.vue'
 import CategoryManageTab from '@/components/CategoryManageTab.vue'
+import ReportTab from '@/components/ReportTab.vue'
 import SettingTab from '@/components/SettingTab.vue'
 
 const router = createRouter({
@@ -30,6 +31,12 @@ const router = createRouter({
           name: 'category',
           component: CategoryManageTab,
           meta: { title: '分类管理' },
+        },
+        {
+          path: 'report',
+          name: 'report',
+          component: ReportTab,
+          meta: { title: '报表' },
         },
         {
           path: 'setting',
