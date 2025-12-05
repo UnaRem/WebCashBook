@@ -1,11 +1,5 @@
 <template>
-  <UModal
-    v-model="visible"
-    :title="isEditing ? '编辑交易' : '添加交易'"
-    size="lg"
-    :show-footer="false"
-    @close="handleClose"
-  >
+  <UModal v-model="visible" :title="isEditing ? '编辑交易' : '添加交易'" size="lg" @close="handleClose">
     <div class="space-y-4">
       <!-- 第一行：时间 + 类型 -->
       <div class="grid grid-cols-2 gap-4">
@@ -23,12 +17,7 @@
       <div class="grid grid-cols-2 gap-4">
         <div>
           <label class="mb-1 block text-sm font-medium text-gray-700">交易分类</label>
-          <USelector
-            v-model="formData.transactionCategory"
-            :options="categoryOptions"
-            placeholder="选择分类"
-            searchable
-          />
+          <USelector v-model="formData.transactionCategory" :options="categoryOptions" placeholder="选择分类" />
         </div>
         <div>
           <label class="mb-1 block text-sm font-medium text-gray-700">金额</label>

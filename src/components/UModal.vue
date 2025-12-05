@@ -4,7 +4,8 @@
       <div
         v-if="modelValue"
         class="fixed inset-0 z-50 flex items-center justify-center bg-black/40"
-        @click.self="handleClose"
+        @mousedown.self="handleOverlayMouseDown"
+        @mouseup.self="handleOverlayMouseUp"
       >
         <Transition name="modal-scale" appear>
           <div v-if="modelValue" class="w-full rounded-xl bg-white p-6 shadow-2xl" :class="sizeClass">
@@ -33,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 
 interface Props {
   modelValue: boolean
@@ -72,11 +73,25 @@ const sizeClass = computed(() => {
   return sizes[props.size]
 })
 
-const handleClose = () => {
-  if (props.closeOnClickOverlay) {
+// 记录 mousedown 是否发生在遮罩层
+const mouseDownOnOverlay = ref(false)
+
+const handleOverlayMouseDown = () => {
+  mouseDownOnOverlay.value = true
+}
+
+const handleOverlayMouseUp = () => {
+  // 只有当 mousedown 和 mouseup 都发生在遮罩层时才关闭
+  if (mouseDownOnOverlay.value && props.closeOnClickOverlay) {
     emit('update:modelValue', false)
     emit('close')
   }
+  mouseDownOnOverlay.value = false
+}
+
+const handleClose = () => {
+  emit('update:modelValue', false)
+  emit('close')
 }
 
 const handleConfirm = () => {
