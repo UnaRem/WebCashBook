@@ -11,6 +11,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    AccountGroup: typeof import('./src/components/AccountGroup.vue')['default']
     AccountItem: typeof import('./src/components/AccountItem.vue')['default']
     CategoryManageTab: typeof import('./src/components/CategoryManageTab.vue')['default']
     CategoryModal: typeof import('./src/components/CategoryModal.vue')['default']
@@ -24,6 +25,7 @@ declare module 'vue' {
     SettingTab: typeof import('./src/components/SettingTab.vue')['default']
     SideBar: typeof import('./src/components/SideBar.vue')['default']
     SideBarTab: typeof import('./src/components/SideBarTab.vue')['default']
+    SnakeBar: typeof import('./src/components/USnakebar.vue')['default']
     ToolBar: typeof import('./src/components/ToolBar.vue')['default']
     TransactionItem: typeof import('./src/components/TransactionItem.vue')['default']
     TransactionModal: typeof import('./src/components/TransactionModal.vue')['default']
