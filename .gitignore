@@ -25,6 +25,7 @@ docs
 *.njsproj
 *.sln
 *.sw?
+.vite
 
 *.tsbuildinfo
 
